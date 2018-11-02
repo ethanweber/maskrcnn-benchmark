@@ -3,13 +3,12 @@ import numpy as np
 
 def rotate_around_pivot(pixels, pivot, theta):
 	"""pixels: dictionary: (x,y): pixel value
-   pivot: pivot (a,b) to rotate around"""
+	pivot: pivot (a,b) to rotate around"""
 	moved_pixels = dict()
 	for point in pixels:
 		moved_pixels[rotate_point_around_pivot(point, pivot, theta)] = pixels[point]
 	return moved_pixels
 		
-
 
 def rotate_point_around_pivot(point, pivot, theta):
 	"""rotates point clockwise around pivot by angle theta"""

@@ -19,11 +19,11 @@ class MaskEnhancer:
 		self.segments_slic = []
 		self.n_segments = resolution
 
-	def get_SLIC_segments(self):
+	def get_SLIC_segments(self, show_segments=True):
 		print("Getting Segments...")
 		segments_slic = slic(self.image, self.n_segments, compactness=10, sigma=1)
 
-		if self.n_segments < 5000:
+		if self.n_segments < 5000 and show_segments:
 			print('SLIC number of segments: {}'.format(len(np.unique(segments_slic))))
 			fig, ax = plt.subplots(1, 1, figsize=(10, 10), sharex=True, sharey=True)
 
@@ -86,6 +86,6 @@ class MaskEnhancer:
 		plt.show()
 		return self.mask
 
-enhancer = MaskEnhancer('demo_images/caterpillar.png', 'demo_images/mask.png', resolution=5e4)
-enhancer.get_SLIC_segments()
-enhancer.tune_mask_trim()
+# enhancer = MaskEnhancer('demo_images/caterpillar.png', 'demo_images/mask.png', resolution=5e2)
+# enhancer.get_SLIC_segments()
+# enhancer.tune_mask_expand()
